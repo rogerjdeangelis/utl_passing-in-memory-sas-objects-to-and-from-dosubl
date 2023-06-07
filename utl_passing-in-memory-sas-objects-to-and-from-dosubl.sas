@@ -92,7 +92,16 @@ run;quit;
 |_|
 */
 
-
+proc datasets lib=work mt=cat;                   
+  delete sasmac1 sasmac2 sasmac3;                
+run;quit;                                        
+                                                 
+proc datasets lib=work nolist nodetails;         
+ delete want;                                    
+run;quit;                                        
+                                                 
+%symdel adrNum adrChr / nowarn;                  
+                                                 
 data want;
 
    /*---- BEST TO PUT THESE FIRST?    ----*/
